@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BattleNet</title>
+	<script src="cordova.js"></script>
+    <!-- My app references -->
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="winjs/css/ui-light.min.css" rel="stylesheet" />
+    <script src="winjs/js/base.min.js"></script>
+    <script src="winjs/js/ui.min.js"></script> 
+	
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    
+    <script src="scripts/platformOverrides.js"></script>
+	<script src="scripts/secret.js"></script>
+	<script src="scripts/battleNetLoader.js"></script>
+    <script src="scripts/index.js"></script>
+</head>
+<body>
+	<div id="login">
+  		<a id="loginClick" style="font-size:20px">Sign In to Battle.net!</a>
+ 		 <p></p>
+	</div>
+	
+    <div id="displayRoot">
+		<img src="images/Sc2Logo.png"/>
+	</div>
+	<div id="profileBorder"></div>
+	<div id="profilePicture"></div>
+	<div id="displayName"></div>
+	<div class="gamesItemTemplate" data-win-control="WinJS.Binding.Template">
+		<div style="width: 172px; height: 45px;">
+			<div data-win-bind="textContent:map"></div>
+			<div data-win-bind="textContent:decision"></div>
+		</div>
+	</div>
+	<div class="rewardsItemTemplate" data-win-control="WinJS.Binding.Template">
+		<div style="width: 132px; height: 112px;">
+			<div data-win-bind="style.backgroundImage: url;style.backgroundPositionX: x;style.backgroundPositionY: y;style.width: w; style.height: h"></div>
+			<div data-win-bind="textContent: title"></div>
+		</div>
+	</div>
+	<div class="achievementsItemTemplate" data-win-control="WinJS.Binding.Template">
+		<div style="width: 172px; height: 145px;">
+			<div data-win-bind="style.backgroundImage: url;style.backgroundPositionX: x;style.backgroundPositionY: y;style.width: w; style.height: h"></div>
+			<div data-win-bind="textContent: title"></div>
+			<div data-win-bind="textContent: description"></div>
+		</div>
+	</div>
+	<div id="listsContainer">
+		<div id="games" data-win-control="WinJS.UI.ListView" data-win-options="{itemDataSource:Data.games.dataSource, itemTemplate:select('.gamesItemTemplate')}"></div>
+		<div id="rewards" data-win-control="WinJS.UI.ListView" data-win-options="{itemDataSource:Data.rewards.dataSource, itemTemplate:select('.rewardsItemTemplate')}"></div>
+		<div id="achievements" data-win-control="WinJS.UI.ListView" data-win-options="{itemDataSource:Data.achievements.dataSource, itemTemplate:select('.achievementsItemTemplate')}"></div>
+	</div>
+</body>
+</html>

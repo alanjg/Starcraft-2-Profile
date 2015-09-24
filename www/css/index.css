@@ -1,0 +1,63 @@
+﻿body {
+}
+
+#profilePicture {
+	background-repeat: no-repeat;
+	width: 90px;
+	height: 90px;
+	-ms-grid-column: 2;
+	-ms-grid-column-align: end;
+	position: relative;
+	right: 17.31px;
+	top: 23.07px;
+	z-index: -4;
+}
+
+#displayRoot {
+/*	display: -ms-grid;*/
+	-ms-grid-columns: 166px 1fr;
+	-ms-grid-rows: 130px 1fr;
+}
+
+#games {
+	height: 200px;
+}
+
+#rewards {
+	-ms-grid-row: 2;
+	top: 130px;
+	height: 300px;
+}
+
+#achievements{
+	-ms-grid-row: 3;
+	top: 430px;
+	height: 300px;
+}
+
+#displayName {
+	-ms-grid-column: 2;
+	left: 166px;
+	position: relative;
+	-ms-grid-row-align: center;
+	font-size: 3em;
+}
+
+#profileBorder {
+	width: 131px;
+	height: 136px;
+	left: 166px;
+	-ms-grid-column: 2;
+	-ms-grid-column-align: end;
+	
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+#listsContainer {
+	top: 133px;
+	-ms-grid-row: 2;
+	-ms-grid-column-span: 2;
+	display: -ms-grid;
+	-ms-grid-rows: auto auto auto;
+}
