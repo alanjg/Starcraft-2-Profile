@@ -7,7 +7,7 @@
 					var profileObj = JSON.parse(req.responseText);
 					comp(profileObj);
 				} else {
-					err(req)
+				    err(req);
 				}
 			}
 		}
@@ -82,21 +82,26 @@ function loadProfile(profilePath, data) {
 	var achievements = data.achievements;
 	var rewards = data.rewards;
 
-	var baseUrl = "http://us.battle.net/api/sc2";
+	var baseUrl = "https://us.api.battle.net/sc2";
 	var profileUrl = baseUrl + profilePath;
 	var laddersUrl = profileUrl + "ladders";
 	var matchesUrl = profileUrl + "matches";
 	var achievementsUrl = baseUrl + "/data/achievements";
 	var rewardsUrl = baseUrl + "/data/rewards";
 
-	loadResourceAsync(profileUrl).then(function (profile) {
-		loadResourceAsync(achievementsUrl).then(function (achievementsJson) {
-			loadResourceAsync(rewardsUrl).then(function (rewardsJson) {
+
+	var profileUrlWithKey = profileUrl + "?apikey=" + WinJS.Application.clientId;
+	loadResourceAsync(profileUrlWithKey).then(function (profile) {
+	    var achievementsUrlWithKey = achievementsUrl + "?apikey=" + WinJS.Application.clientId;
+	    loadResourceAsync(achievementsUrlWithKey).then(function (achievementsJson) {
+	        var rewardsUrlWithKey = rewardsUrl + "?apikey=" + WinJS.Application.clientId;
+			loadResourceAsync(rewardsUrlWithKey).then(function (rewardsJson) {
 				processProfile(profile, achievements, rewards, achievementsJson, rewardsJson);
 			});
 		});
 	});
-	loadResourceAsync(matchesUrl).then(function (matches) {
+	var matchesUrlWithKey = matchesUrl + "?apikey=" + WinJS.Application.clientId;
+	loadResourceAsync(matchesUrlWithKey).then(function (matches) {
 		processMatches(matches, games);
 	});
 }

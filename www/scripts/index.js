@@ -46,8 +46,6 @@
     		req.onreadystatechange = handler;	
     		req.setRequestHeader('Authorization', 'Basic ' + window.btoa(unescape(encodeURIComponent(user + ':' + password))));
     		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    		req.setRequestHeader("Content-length", params.length);
-    		req.setRequestHeader("Connection", "close");
     		req.send(params);
     		prog();
     	});
